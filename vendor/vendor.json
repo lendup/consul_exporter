@@ -3,12 +3,6 @@
 	"ignore": "test",
 	"package": [
 		{
-			"checksumSHA1": "h5Q1o+kA7VMAR5QpBzVJZbBEgC0=",
-			"path": "github.com/sirupsen/logrus",
-			"revision": "881bee4e20a5d11a6a88a5667c6f292072ac1963",
-			"revisionTime": "2016-12-02T02:35:07Z"
-		},
-		{
 			"checksumSHA1": "KmjnydoAbofMieIWm+it5OWERaM=",
 			"path": "github.com/alecthomas/template",
 			"revision": "a0175ee3bccc567396460bf5acd36800cb10c49c",
@@ -59,10 +53,10 @@
 			"revisionTime": "2017-02-28T23:04:16Z"
 		},
 		{
-			"checksumSHA1": "fy0NvJZgZrPUxQROQNt8+IEJ0ZU=",
+			"checksumSHA1": "AP4oQjM3mVkTwxwMpLP73CWfGBw=",
 			"path": "github.com/hashicorp/consul/api",
-			"revision": "ab6c49ab4c61c49f53f094f71747d8f898818269",
-			"revisionTime": "2017-02-28T23:04:16Z"
+			"revision": "f8dcff8bd8b4aa8242d8f8581e6255fa5498062a",
+			"revisionTime": "2018-07-11T12:51:15Z"
 		},
 		{
 			"checksumSHA1": "S3ufu3nrahmecm5mForPAm5fp24=",
@@ -77,11 +71,11 @@
 			"revisionTime": "2017-02-28T23:04:16Z"
 		},
 		{
-			"checksumSHA1": "b8F628srIitj5p7Y130xc9k0QWs=",
+			"checksumSHA1": "YAq1rqZIp+M74Q+jMBQkkMKm3VM=",
 			"origin": "github.com/hashicorp/consul/vendor/github.com/hashicorp/go-cleanhttp",
 			"path": "github.com/hashicorp/go-cleanhttp",
-			"revision": "ab6c49ab4c61c49f53f094f71747d8f898818269",
-			"revisionTime": "2017-02-28T23:04:16Z"
+			"revision": "f8dcff8bd8b4aa8242d8f8581e6255fa5498062a",
+			"revisionTime": "2018-07-11T12:51:15Z"
 		},
 		{
 			"checksumSHA1": "TNlVzNR1OaajcNi3CbQ3bGbaLGU=",
@@ -89,6 +83,12 @@
 			"path": "github.com/hashicorp/go-msgpack/codec",
 			"revision": "ab6c49ab4c61c49f53f094f71747d8f898818269",
 			"revisionTime": "2017-02-28T23:04:16Z"
+		},
+		{
+			"checksumSHA1": "A1PcINvF3UiwHRKn8UcgARgvGRs=",
+			"path": "github.com/hashicorp/go-rootcerts",
+			"revision": "6bb64b370b90e7ef1fa532be9e591a81c3493e00",
+			"revisionTime": "2016-05-03T14:34:40Z"
 		},
 		{
 			"checksumSHA1": "d9PxF1XQGLMJZRct2R8qVM/eYlE=",
@@ -188,10 +188,28 @@
 			"revisionTime": "2016-04-24T11:30:07Z"
 		},
 		{
-			"checksumSHA1": "QIkEQIvgzjeOXM92+lZlbeXCaRU=",
+			"checksumSHA1": "SvPS4zqZYImMcBu+dLgp6+9eeUo=",
+			"path": "github.com/mitchellh/go-homedir",
+			"revision": "3864e76763d94a6df2f9960b16a20a33da9f9a66",
+			"revisionTime": "2018-05-23T09:45:22Z"
+		},
+		{
+			"checksumSHA1": "ewGq4nGalpCQOHcmBTdAEQx1wW0=",
+			"path": "github.com/mitchellh/mapstructure",
+			"revision": "bb74f1db0675b241733089d5a1faa5dd8b0ef57b",
+			"revisionTime": "2018-05-11T14:21:26Z"
+		},
+		{
+			"checksumSHA1": "DzvTaAmO8QkwJ4Vh6LaimkbKJhM=",
 			"path": "github.com/prometheus/client_golang/prometheus",
-			"revision": "ae77d82d88424108650cfcfc99b9aa3e52a2cd1e",
-			"revisionTime": "2017-02-28T15:13:17Z"
+			"revision": "ee1c9d7e23df7f011bdf6f12a5c9e7f0ae10a1fe",
+			"revisionTime": "2018-07-10T22:10:52Z"
+		},
+		{
+			"checksumSHA1": "MYqKV5uVTfCxP9zBug7naBQ1vr8=",
+			"path": "github.com/prometheus/client_golang/prometheus/promhttp",
+			"revision": "ee1c9d7e23df7f011bdf6f12a5c9e7f0ae10a1fe",
+			"revisionTime": "2018-07-10T22:10:52Z"
 		},
 		{
 			"checksumSHA1": "DvwvOlPNAgRntBzt3b3OSRMS2N4=",
@@ -240,6 +258,12 @@
 			"path": "github.com/prometheus/procfs/xfs",
 			"revision": "a59ae619c824360be3641ceb5a456ff13dd58be6",
 			"revisionTime": "2017-02-14T15:35:19Z"
+		},
+		{
+			"checksumSHA1": "h5Q1o+kA7VMAR5QpBzVJZbBEgC0=",
+			"path": "github.com/sirupsen/logrus",
+			"revision": "881bee4e20a5d11a6a88a5667c6f292072ac1963",
+			"revisionTime": "2016-12-02T02:35:07Z"
 		},
 		{
 			"checksumSHA1": "RZn37yez/F+5r/PsTW+7w3Ie1mQ=",

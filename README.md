@@ -52,7 +52,7 @@ make
 * __`consul.server-name`:__ When provided, this overrides the hostname for the
     TLS certificate. It can be used to ensure that the certificate name matches
     the hostname we declare.
-* __`consul.timeout`:__ Timeout on HTTP requests to consul.
+* __`consul.skip-ssl-verify`:__ Skip SSL certificate verification.
 * __`log.format`:__ Set the log target and format. Example: `logger:syslog?appname=bob&local=7`
     or `logger:stdout?json=true`
 * __`log.level`:__ Logging level. `info` by default.

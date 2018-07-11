@@ -10,9 +10,9 @@ import (
 	"strconv"
 	"strings"
 	"sync"
-	"time"
 
 	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/prometheus/common/log"
 	"github.com/prometheus/common/version"
 	"gopkg.in/alecthomas/kingpin.v2"
@@ -90,12 +90,12 @@ type Exporter struct {
 }
 
 type consulOpts struct {
-	uri        string
-	caFile     string
-	certFile   string
-	keyFile    string
-	serverName string
-	timeout    time.Duration
+	uri                string
+	insecureSkipVerify bool
+	caFile             string
+	certFile           string
+	keyFile            string
+	serverName         string
 }
 
 // NewExporter returns an initialized Exporter.
@@ -113,10 +113,11 @@ func NewExporter(opts consulOpts, kvPrefix, kvFilter string, healthSummary bool)
 	}
 
 	tlsConfig, err := consul_api.SetupTLSConfig(&consul_api.TLSConfig{
-		Address:  opts.serverName,
-		CAFile:   opts.caFile,
-		CertFile: opts.certFile,
-		KeyFile:  opts.keyFile,
+		Address:            opts.serverName,
+		CAFile:             opts.caFile,
+		CertFile:           opts.certFile,
+		InsecureSkipVerify: opts.insecureSkipVerify,
+		KeyFile:            opts.keyFile,
 	})
 	if err != nil {
 		return nil, err
@@ -127,8 +128,7 @@ func NewExporter(opts consulOpts, kvPrefix, kvFilter string, healthSummary bool)
 	config := consul_api.DefaultConfig()
 	config.Address = u.Host
 	config.Scheme = u.Scheme
-	config.HttpClient.Timeout = opts.timeout
-	config.HttpClient.Transport = transport
+	config.Transport = transport
 
 	client, err := consul_api.NewClient(config)
 	if err != nil {
@@ -359,7 +359,7 @@ func main() {
 	kingpin.Flag("consul.cert-file", "File path to a PEM-encoded certificate used with the private key to verify the exporter's authenticity.").Default("").StringVar(&opts.certFile)
 	kingpin.Flag("consul.key-file", "File path to a PEM-encoded private key used with the certificate to verify the exporter's authenticity.").Default("").StringVar(&opts.keyFile)
 	kingpin.Flag("consul.server-name", "When provided, this overrides the hostname for the TLS certificate. It can be used to ensure that the certificate name matches the hostname we declare.").Default("").StringVar(&opts.serverName)
-	kingpin.Flag("consul.timeout", "Timeout on HTTP requests to consul.").Default("200ms").DurationVar(&opts.timeout)
+	kingpin.Flag("consul.skip-ssl-verify", "Skip SSL certificate verification.").Default("false").BoolVar(&opts.insecureSkipVerify)
 
 	// Query options.
 	kingpin.Flag("consul.allow_stale", "Allows any Consul server (non-leader) to service a read.").Default("true").BoolVar(&queryOptions.AllowStale)
@@ -384,7 +384,7 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	http.Handle(*metricsPath, prometheus.Handler())
+	http.Handle(*metricsPath, promhttp.Handler())
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(`<html>
              <head><title>Consul Exporter</title></head>
